@@ -1,0 +1,62 @@
+﻿@using PROJET_1.Models
+@using PagedList.Mvc;
+@using PagedList ;
+@model PagedList.IPagedList<PROJET_1.Models.laureat>
+
+@{
+    ViewBag.Title = "Laureat";
+    Layout = "~/Views/Shared/_EvenementLayoutPage.cshtml";
+}
+<!-- End Content -->
+<!-- Start Pricing Horizontal Section -->
+<section class="bg-light pt-sm-0 py-5">
+    <div class="container py-5">
+
+        <h1 class="h2 semi-bold-600 text-center mt-2">Notre Laureats</h1>
+        <div>
+            <label for="cars">Filtre selon la filiere:</label>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <a href="@Url.Action("Laureat", new { sortOrder = "gi", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-primary" role="button" aria-pressed="true">
+                    GI
+                </a>
+
+                <a href="@Url.Action("Laureat", new { sortOrder = "gtr", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-secondary" role="button" aria-pressed="true">
+                    GTR
+                </a>
+
+                <a href="@Url.Action("Laureat", new { sortOrder = "gind", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-success" role="button" aria-pressed="true">
+                    GINDUS
+                </a>
+
+                <a href="@Url.Action("Laureat", new { sortOrder = "gpmc", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-warning" role="button" aria-pressed="true">
+                    GPMC
+                </a>
+
+            </div>
+            
+        </div>
+        <table class="table">
+            <tr>
+                <td>Nom</td>
+                <td>Prenom</td>
+                <td>Filiere</td>
+                <td>Email</td>
+                <td>Societe actuelle</td>
+                <td>Pays</td>
+                <td>Ville</td>
+            </tr>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.nom</td>
+                    <td>@e.prenom</td>
+                    <td>@e.filiere1.nom</td>
+                    <td>@e.email</td>
+                    <td>@e.societe_actuelle</td>
+                    <td>@e.pays</td>
+                    <td>@e.ville</td>
+                 </tr>
+            }
+        </table>
+    </div>
+</section>
